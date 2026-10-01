@@ -1,0 +1,309 @@
+
+
+HTML → Understand webpage structure → Identify elements → Write Selenium locators → Automate
+1. First understand HTML structure
+A basic page look like
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Page</title>
+</head>
+
+<body>
+
+    <h1>Login</h1>
+
+    <input type="text" id="username">
+
+    <input type="password" id="password">
+
+    <button id="login">Login</button>
+
+</body>
+
+</html>
+
+For Selenium, focus mainly on the elements inside <body>.
+
+2. Learn HTML Tags.
+
+A tag tells the browser what type of element it is.
+
+Common tags you should know:
+
+HTML Tag					Purpose								  Selenium Example	
+
+<input>				Text box, password, etc.						Username field
+<button>					Button									Login button
+<a>		anchor			Link										Forgot Password
+<select>					Dropdown									Country
+<option>					Dropdown option							India
+<textarea>				Large text box							Comments
+<checkbox>				Usually <input type="checkbox">			Remember me
+<radio>					Usually <input type="radio">				Gender
+<div>					Container								Page sections
+<span>					Inline container/text					Labels
+<label>					Label for input							Username
+<table>					Table									Employee data
+
+3. Most Important: Attributes
+
+For Selenium testing, attributes are extremely important.
+
+<input type="text" id="username" name="userName">
+
+Here;
+
+input     → Tag
+type      → Attribute
+text      → Attribute value
+id        → Attribute
+username  → Attribute value
+name      → Attribute
+userName  → Attribute value
+
+TAG + ATTRIBUTE + VALUE
+
+
+HTML:
+<input type="text" id="username">
+
+selenium + java
+driver.findElement(By.id("username"));
+
+Complete example: java
+
+WebElement username = driver.findElement(By.id("username"));
+
+username.sendKeys("Jeetesh");
+
+java
+By.id("username")
+
+Find the HTML element whose id is username.
+
+5. Learn name HTML:
+<input type="text" name="username">
+
+Selenium + java
+driver.findElement(By.name("username"));
+
+Complete Code :
+
+driver.findElement(By.name("username"))
+      .sendKeys("Jeetesh");
+      
+6. Learn class HTML
+<button class="login-button">
+    Login
+</button>
+
+Selenium + java
+driver.findElement(By.className("login-button"));
+
+7. Learn Link Text HTML
+
+<a href="forgot.html">Forgot Password?</a>
+
+Selenium + Java
+driver.findElement(By.linkText("Forgot Password?")).click();
+
+
+8. Learn CSS Selectors (This is very important for Selenium.)
+
+Suppose HTML is:
+
+<input id="username" class="form-control" type="text">
+
+We can locate it using:
+
+ID : JAVA
+By.cssSelector("#username")
+Class: Java
+By.cssSelector(".form-control")
+Tag : Java
+By.cssSelector("input")
+
+Tag + ID JAVA
+By.cssSelector("input#username")
+
+Tag + Class JAVA
+By.cssSelector("input.form-control")
+
+9. Learn XPath
+XPath is another extremely important Selenium skill.
+
+HTML
+<input id="username" name="user">
+
+XPath JAVA
+By.xpath("//input[@id='username']")
+
+Example
+
+By.xpath("//input[@name='user']")
+
+Understand this structure
+//input[@id='username']
+  │      │       │
+  │      │       └── Value
+  │      └────────── Attribute
+  └───────────────── Tag
+
+10. Learn text() HTML
+<button>Login</button>
+
+XPATH
+By.xpath("//button[text()='Login']")
+
+This means:
+
+Find the button whose visible text is Login.
+
+11. Learn contains() HTML
+
+<button id="loginButton123">Login</button>
+
+We can use
+
+By.xpath("//button[contains(@id,'loginButton')]")
+
+
+12. Learn Parent-Child Relationships
+
+This is very important when HTML becomes complicated (HTML)
+
+<div id="login">
+
+    <input id="username">
+
+    <input id="password">
+
+    <button>Login</button>
+
+</div>
+
+WE CAN UNDERSTAND THE STRUCTURE
+
+div
+ ├── input
+ ├── input
+ └── button
+ 
+ XPath can use this relationship:
+ //div[@id='login']//button
+ Meaning:
+
+Find the button inside the div whose id is login.
+
+13. Learn HTML Forms
+
+<form>
+    <label>Username</label>
+    <input type="text">
+
+    <label>Password</label>
+    <input type="password">
+
+    <button type="submit">Login</button>
+</form>
+
+JAVA AUTOMATING:
+
+driver.findElement(By.id("username")).sendKeys("Jeetesh");
+
+driver.findElement(By.id("password")).sendKeys("12345");
+
+driver.findElement(By.id("login")).click();
+
+
+14. Learn Different Web Elements
+
+Text box html
+
+<input type="text" id="username">
+
+Password
+
+<input type="password" id="password">
+
+Button
+
+<button id="login">Login</button>
+
+Checkbox
+
+<button id="login">Login</button>
+
+Radio Button
+<input type="radio" name="gender" value="male">
+
+Dropdown
+
+<select id="country">
+    <option>India</option>
+    <option>USA</option>
+</select>
+
+Link
+
+<a href="home.html">Home</a>
+
+Right click --- select inspect
+
+We'll see HTML such as: 
+
+<input type="text" id="username" name="user">
+
+Now you can inspect the element and determine:
+Tag       → input
+id        → username
+name      → user
+type      → text
+
+Java
+By.id("username") or
+By.name("user") or
+By.xpath("//input[@id='username']") 
+
+HTML:
+
+<html>
+<body>
+
+<h1>Student Registration</h1>
+
+<input type="text" id="name" name="studentName">
+
+<input type="text" id="age">
+
+<input type="password" id="password">
+
+<input type="checkbox" id="terms">
+
+<button id="register">Register</button>
+
+</body>
+</html>
+
+Java:
+
+By.id()
+By.name()
+By.className()
+By.cssSelector()
+By.xpath()
+
+HTML       → Creates the web elements
+CSS        → Styles the web elements
+JavaScript → Adds behavior/functionality
+Selenium   → Automates/interacts with those elements
+Java       → Your programming language for Selenium
+
+
+
+
+
+
+
